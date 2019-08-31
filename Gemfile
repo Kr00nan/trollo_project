@@ -17,6 +17,10 @@ gem "semantic-ui-sass"
 group :development, :test do
   gem "pry-rails"
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'database_cleaner'
+  gem 'simplecov'
 end
 
 group :development do
