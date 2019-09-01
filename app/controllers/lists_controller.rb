@@ -1,24 +1,25 @@
 class ListsController < ApplicationController
   before_action :set_board
-  before_action :set_list, only: [:show, :update, :edit, :destory]
+  before_action :set_list, only: [:show, :update, :edit, :destroy]
 
   def index
-    @lists = List.find(@board)
+    @lists = @board.lists
   end
 
   def show
   end
 
   def new
-    @list = List.new
+    @list = @board.lists.new
   end
 
   def create
-    @list = List.new(list_params)
+    @list = @board.lists.new(list_params)
 
     if @list.save
-      redirect_to board_list_path(@board)
+      redirect_to board_lists_path
     else
+      render :new
     end
   end
 
@@ -29,7 +30,7 @@ class ListsController < ApplicationController
     @list = List.update(list_params)
 
     if @list.update
-      redirect_to board_list_path(@board)
+      redirect_to board_lists_path
     else
       render :edit
     end
@@ -37,12 +38,12 @@ class ListsController < ApplicationController
 
   def destroy
     @list.destroy
-    redirect_to board_list_path(@board)
+    redirect_to board_lists_path
   end
 
   private
   def set_board
-    @board = Board.find()
+    @board = Board.find(params[:board_id])
   end
 
   def set_list
