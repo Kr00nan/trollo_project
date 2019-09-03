@@ -1,9 +1,10 @@
 <h1>Assigned Lists for <%= @board.name %> </h1>
 <%= link_to 'Create a List', new_board_list_path %>
+<br>
 <%= link_to 'Back to the Boards', boards_path %>
 <hr>
 <% @lists.each do |list| %>
-  <h3><%= link_to "#{list.name}", board_lists_path(list.board_id) %><h3>
+  <h3><%= link_to "#{list.name}", list_tasks_path(list) %><h3>
   <%= link_to 'Edit', edit_board_list_path(list.board_id, list) %>
   <%= link_to 'Delete', board_list_path(list.board_id, list), method: :delete %>
   <hr>
