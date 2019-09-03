@@ -26,8 +26,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    @task = @list.tasks.update(task_params)
-    if @task.update
+    if @task.update(task_params)
       redirect_to list_tasks_path
     else
       render :edit
